@@ -40,8 +40,29 @@ var isValidSudoku = function (board) {
 
 
   //check the 3x3 sub boxes
+  for (let i = 0; i < 9; i++) {
 
+    const subBoxMap = new Map();
+    console.log('i', i)
+    const rowStart = Math.floor(i / 3) * 3;
+    const colStart = (i % 3) * 3;
 
-    return true;
+    for (let j = 0; j < 9; j++) {
+      const row = rowStart + Math.floor(j / 3);
+      const col = colStart + (j % 3);
+
+      if (subBoxMap.has(board[row][col])) {
+        return false;
+      }
+
+      if (board[row][col] !== ".") {
+        subBoxMap.set(board[row][col], 1)
+        console.log('inside loop')
+        console.log(subBoxMap)
+      }
+    }
+  }
+
+  return true;
 
 };
