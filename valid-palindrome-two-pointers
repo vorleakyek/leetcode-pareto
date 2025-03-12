@@ -1,0 +1,28 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+
+var isPalindrome = function(s) {
+    
+    let startInd = 0; 
+    let endInd = s.length - 1; 
+
+    const regEx = /[a-zA-Z0-9]/; 
+
+    while (startInd < endInd) {
+        
+        if(!regEx.test(s[startInd])) {
+            ++startInd; 
+        } else if (!regEx.test(s[endInd])) {
+            --endInd;
+        } else if (s[startInd].toLowerCase() !== s[endInd].toLowerCase()) {
+            return false;
+        } else {
+            ++startInd;
+            --endInd; 
+        }
+    }
+
+    return true;
+};
