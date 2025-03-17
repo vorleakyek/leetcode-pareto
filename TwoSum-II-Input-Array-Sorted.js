@@ -4,6 +4,33 @@
  * @return {number[]}
  */
 
+var twoSum = function(numbers, target) {
+
+    let startInd = 0;
+    let endInd = numbers.length - 1; 
+
+
+    while (startInd < endInd) {
+
+        let sum = numbers[startInd] + numbers[endInd];
+
+        if (sum === target) {
+            return [startInd +1, endInd +1]; 
+        }
+
+        if (sum < target) {
+            startInd++;
+        } else {
+            endInd--;
+        }
+
+    }
+
+    return [];
+}
+
+
+
 //VERSION 1 - INEFFICIENT CODE 
 var twoSum = function(numbers, target) {
     
@@ -25,3 +52,6 @@ var twoSum = function(numbers, target) {
     }
 
 };
+
+
+
