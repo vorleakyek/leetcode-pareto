@@ -33,6 +33,60 @@ class SinglyLinkedList {
     return val;  
   }
 
+  pushBack(val) {
+    const newNode = new Node(val);
+    this._size++; 
+    
+    if (!this.head) {
+      this.head = newNode;
+      return
+    }
+
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next; 
+    }
+    currentNode.next = newNode; 
+  }
+
+
+  popBack() {
+    
+    if (!this.head) {
+      return null;
+    }
+
+    this._size--;
+    if (!this.head.next) {
+      const val = this.head.val;
+      this.head = null;
+      return val;
+    }
+
+    let cur = this.head;
+    //need the cur to be the second to the last since we want to remove the last node
+    //this while loop condition will ensure that the cur node will stop at the second-to-last node 
+    while (cur.next && cur.next.next ) {
+      cur = cur.next; 
+    }
+
+    const val = cur.next.val;
+    cur.next = null;
+    return val; 
+  }
+
+  contains(val) {
+    let cur = this.head;
+    while(cur) {
+      if (cur.val === val) {
+        return cur;
+      }
+      cur = cur.next;
+    }
+
+    return null;
+  }
+
 
 }
 
